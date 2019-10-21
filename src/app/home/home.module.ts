@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { HomePage } from './home.page';
         component: HomePage
       }
     ])
+  ],
+  providers: [
+    CallNumber
   ],
   declarations: [HomePage]
 })
