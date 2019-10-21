@@ -12,7 +12,7 @@
         <ion-avatar slot="start">
             <img [src]="avatares[i]">
           </ion-avatar>
-        <ion-label (click)="viewUser(u?.id)"><h2>{{u?.name}}</h2><p>{{u?.company.name}}</p></ion-label>
+        <ion-label (click)="viewUser(u?.id)"><h2>{{u?.name}}</h2><p> <ion-icon name="business"></ion-icon>{{u?.company.name}}</p></ion-label>
      
         <ion-icon name="call" (click) ="callUser(u?.phone)" *ngIf="u?.phone !== undefined" color="success"></ion-icon>
     </ion-item> 
