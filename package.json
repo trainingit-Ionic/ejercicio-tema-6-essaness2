@@ -29,6 +29,7 @@
     "cordova-android": "8.1.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
+    "ts-md5": "^1.2.6",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {

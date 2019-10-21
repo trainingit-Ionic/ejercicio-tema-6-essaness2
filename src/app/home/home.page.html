@@ -7,9 +7,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngFor="let u of usuarios">
+  <ion-list *ngFor="let u of usuarios; index as i">
      <ion-item>
-        <ion-label (click)="viewUser(u?.id)"><b>{{u?.name}}</b></ion-label>
+        <ion-avatar slot="start">
+            <img [src]="avatares[i]">
+          </ion-avatar>
+        <ion-label (click)="viewUser(u?.id)"><h2>{{u?.name}}</h2><p>{{u?.company.name}}</p></ion-label>
      
         <ion-icon name="call" (click) ="callUser(u?.phone)" *ngIf="u?.phone !== undefined" color="success"></ion-icon>
     </ion-item> 

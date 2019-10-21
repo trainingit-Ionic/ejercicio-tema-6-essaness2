@@ -5,6 +5,8 @@ import { User } from '../model/user';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Router } from '@angular/router';
 
+import {Md5} from 'ts-md5/dist/md5';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -13,10 +15,14 @@ import { Router } from '@angular/router';
 export class HomePage {
   usuarios: User[];
 
+  avatares =  new Array<string>();
+
   constructor(private users: UserService, private call: CallNumber, private router: Router) {
+    
     this.users.get().subscribe(
       resp => {
         this.usuarios = resp;
+        this.generarAvatares();
       },
       error => {
         console.log('Error feching users', error);
@@ -24,6 +30,14 @@ export class HomePage {
     );
   }
 
+  generarAvatares() {
+    console.log('generar avatares');
+    for (let i = 0 ; i < this.usuarios.length; i++) {
+        const email = this.usuarios[i].email;
+        const contenido = 'https://gravatar.com/avatar/' + Md5.hashAsciiStr(email.trim().toLocaleLowerCase()) as string;
+        this.avatares.push(contenido);
+    }
+  }
   callUser(phone) {
     console.log(phone);
     if (phone !== undefined) {

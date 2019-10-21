@@ -5,6 +5,8 @@ import { UserService } from '../services/user.service';
 import { User } from '../model/user';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
+import {Md5} from 'ts-md5/dist/md5';
+
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.page.html',
@@ -15,6 +17,8 @@ export class ClientsPage implements OnInit {
 
   userDetail: User;
 
+  avatar: string;
+
   constructor(private route: ActivatedRoute, private userService: UserService, private call: CallNumber) {}
 
   ngOnInit() {
@@ -23,6 +27,7 @@ export class ClientsPage implements OnInit {
       this.userService.getOne(Number(this.id)).subscribe(
         (res) => {
           this.userDetail = res;
+          this.avatar = 'https://gravatar.com/avatar/' + Md5.hashAsciiStr(res.email.trim().toLocaleLowerCase()) as string;
         },
         (error) => {
           console.log('Error retrieving user ', error);
