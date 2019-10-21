@@ -17,27 +17,27 @@
     
     <ion-item>
         <ion-icon name="mail" slot="start"></ion-icon>
-        <ion-label> <p>Email</p><h2>{{userDetail?.email}}</h2></ion-label>
+        <ion-label text-wrap> <p>Email</p><h2>{{userDetail?.email}}</h2></ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item >
         <ion-icon name="apps" slot="start"></ion-icon>
       
-        <ion-label>  <p>Address</p><h2>{{userDetail?.address.street}}
+        <ion-label text-wrap>  <p>Address</p><h2>{{userDetail?.address.street}}
            {{userDetail?.address.city}} 
            {{userDetail?.address.suite}}
             {{userDetail?.address.zipcode}}</h2></ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="userDetail?.phone !== undefined">
         <ion-icon name="phone-portrait" slot="start"></ion-icon>
-        <ion-label> <p>Phone</p><h2>{{userDetail?.phone}}</h2></ion-label>
+        <ion-label text-wrap> <p>Phone</p><h2>{{userDetail?.phone}}</h2></ion-label>
     </ion-item>
     <ion-item>
         <ion-icon name="at" slot="start"></ion-icon>
-        <ion-label><p>WebSide</p><h2>{{userDetail?.website}}</h2></ion-label>
+        <ion-label text-wrap><p>WebSide</p><h2>{{userDetail?.website}}</h2></ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item >
         <ion-icon name="trophy"slot="start"></ion-icon>
-        <ion-label><p>Company</p><h2>{{userDetail?.company.name}} {{userDetail?.company.catchPhrase}}</h2></ion-label>
+        <ion-label text-wrap><p>Company</p><h2>{{userDetail?.company.name}} {{userDetail?.company.catchPhrase}}</h2></ion-label>
     </ion-item>
     <ion-button expand="full" color="success" (click)="callUser(userDetail?.phone);" *ngIf="userDetail?.phone !== undefined"><ion-icon name="call" slot="start"></ion-icon>Call me</ion-button>
   </ion-card-content>
